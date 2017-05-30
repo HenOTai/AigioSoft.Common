@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RootPath", "RootPath", "{BB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AigioSoft.Common.Release", "AigioSoft.Common.Release\AigioSoft.Common.Release.csproj", "{5CFDF239-29D1-4341-9CFA-3B0697C465E0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AigioSoft.Common.UnitTest", "AigioSoft.Common.UnitTest\AigioSoft.Common.UnitTest.csproj", "{C50CC583-9086-4697-8798-CF8B5CE13EFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{5CFDF239-29D1-4341-9CFA-3B0697C465E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CFDF239-29D1-4341-9CFA-3B0697C465E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CFDF239-29D1-4341-9CFA-3B0697C465E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C50CC583-9086-4697-8798-CF8B5CE13EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C50CC583-9086-4697-8798-CF8B5CE13EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C50CC583-9086-4697-8798-CF8B5CE13EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C50CC583-9086-4697-8798-CF8B5CE13EFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
