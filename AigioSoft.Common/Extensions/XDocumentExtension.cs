@@ -8,7 +8,7 @@ namespace AigioSoft.Common
     /// <summary>
     /// System.Xml.Linq.XDocument 扩展
     /// </summary>
-    public static class XDocumentExtensions
+    public static class XDocumentExtension
     {
         /// <summary>
         /// 将 XML 文档对象转换为 XML 字符串。

@@ -7,7 +7,7 @@ namespace AigioSoft.Common
     /// <summary>
     /// System.DateTime 扩展
     /// </summary>
-    public static class DateTimeExtensions
+    public static class DateTimeExtension
     {
         public const string CompleteFormat = "yyyy-MM-dd HH:mm:ss.fffffff";
         public const string StandardFormat = "yyyy-MM-dd HH:mm:ss";

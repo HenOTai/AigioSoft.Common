@@ -9,7 +9,7 @@ namespace AigioSoft.Common
     /// <summary>
     /// System.Enum 扩展
     /// </summary>
-    public static class EnumExtensions
+    public static class EnumExtension
     {
         /// <summary>
         /// 获取当前枚举描述

@@ -2,10 +2,10 @@
 AigioSoft Common .NET Standard Library
 * Namespace AigioSoft.Common
   * Extensions
-    * [DateTime](#datetimeextensions)
+    * [DateTime](#datetimeextension)
     * [Enum](#enumextensions)
     * [Linq](#linqextension)
-    * [String](#stringextensions)
+    * [String](#stringextension)
     * XDocument
 * Namespace AigioSoft.Common.Helpers
   * [Hashs](#hashshelper)
@@ -23,7 +23,7 @@ AigioSoft Common AspNetCore.Mvc .NET Standard Library
 
 ___
 
-### <span id="datetimeextensions">DateTimeExtensions</span>
+### <span id="datetimeextension">DateTimeExtension</span>
 ```
 using AigioSoft.Common;
 
@@ -70,7 +70,7 @@ new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.AsQueryable().OrderByDescending(x => x).Pagi
 // {"PageSize":5,"Total":9,"PageCount":2,"CurrentPageIndex":1,"Table":[9,8,7,6,5]}
 ```
 
-### <span id="stringextensions">StringExtension</span>
+### <span id="stringextension">StringExtension</span>
 ```
 using AigioSoft.Common;
 
