@@ -12,40 +12,142 @@ namespace AigioSoft.Common.Helpers
     public static class RSA
     {
         /// <summary>
-        /// 解密十六进制
+        /// RSA解密（十六进制密文格式）
         /// </summary>
-        /// <param name="privatekey"></param>
-        /// <param name="content"></param>
+        /// <param name="privatekey">RSA私钥</param>
+        /// <param name="content">密文</param>
         /// <returns></returns>
-        // ReSharper disable once InconsistentNaming
-        public static string DecryptHex(string privatekey, params string[] content)
+        public static string DecryptHex(string privatekey, params string[] content) => Decrypt(privatekey, null,
+            x => x.HexStringToBytes(), content);
+
+        /// <summary>
+        /// RSA解密（十六进制密文格式）
+        /// </summary>
+        /// <param name="rsa">RSA私钥</param>
+        /// <param name="content">密文</param>
+        /// <returns></returns>
+        public static string DecryptHex(RSACryptoServiceProvider rsa, params string[] content) => Decrypt(rsa, null,
+            x => x.HexStringToBytes(), content);
+
+        /// <summary>
+        /// RSA解密
+        /// </summary>
+        /// <param name="privatekey">RSA私钥</param>
+        /// <param name="content">密文</param>
+        /// <returns></returns>
+        public static string Decrypt(string privatekey, params string[] content) => Decrypt(privatekey, null,
+            null, content);
+
+        /// <summary>
+        /// RSA解密
+        /// </summary>
+        /// <param name="rsa">RSA私钥</param>
+        /// <param name="content">密文</param>
+        /// <returns></returns>
+        public static string Decrypt(RSACryptoServiceProvider rsa, params string[] content) => Decrypt(rsa, null,
+            null, content);
+
+        /// <summary>
+        /// RSA解密
+        /// </summary>
+        /// <param name="privatekey">RSA私钥</param>
+        /// <param name="encoding">字符编码</param>
+        /// <param name="content">密文</param>
+        /// <returns></returns>
+        public static string Decrypt(string privatekey, Encoding encoding, params string[] content) => Decrypt(privatekey, encoding,
+          null, content);
+
+        /// <summary>
+        /// RSA解密
+        /// </summary>
+        /// <param name="rsa">RSA私钥</param>
+        /// <param name="encoding">字符编码</param>
+        /// <param name="content">密文</param>
+        /// <returns></returns>
+        public static string Decrypt(RSACryptoServiceProvider rsa, Encoding encoding, params string[] content) => Decrypt(rsa, encoding,
+            null, content);
+
+        /// <summary>
+        /// RSA解密
+        /// </summary>
+        /// <param name="privatekey">RSA私钥</param>
+        /// <param name="encoding">字符编码</param>
+        /// <param name="func">密文转Byte[]委托</param>
+        /// <param name="content">密文</param>
+        /// <returns>解密的明文</returns>
+        public static string Decrypt(string privatekey, Encoding encoding = null,
+            Func<string, byte[]> func = null, params string[] content) => Decrypt(GetRSACryptoServiceProvider(privatekey), encoding, func, content);
+
+        /// <summary>
+        /// RSA解密
+        /// </summary>
+        /// <param name="rsa">RSA私钥</param>
+        /// <param name="encoding">字符编码（默认UTF8）</param>
+        /// <param name="func">密文转Byte[]委托（默认encoding.GetBytes）</param>
+        /// <param name="content">密文</param>
+        /// <returns>解密的明文</returns>
+        public static string Decrypt(RSACryptoServiceProvider rsa, Encoding encoding = null,
+            Func<string, byte[]> func = null, params string[] content)
         {
+            if (rsa == null)
+                throw new ArgumentNullException(nameof(rsa));
             if (content == null || !content.Any())
-                return null;
-            using (var rsa = new RSACryptoServiceProvider())
+                throw new ArgumentNullException(nameof(content));
+            encoding = encoding ?? Encoding.UTF8;
+            try
             {
-                rsa.FromXmlString(privatekey);
-                var result = content.Select(x => Encoding.UTF8.GetString(rsa.Decrypt(x.HexStringToBytes(), false)));
-                return string.Join(string.Empty, result);
+                // ReSharper disable once AccessToDisposedClosure
+                return string.Join(string.Empty,
+                    content.Select(x => encoding.GetString(rsa.Decrypt(func != null ? func(x) : encoding.GetBytes(x), false))));
+            }
+            finally
+            {
+                rsa.Dispose();
             }
         }
 
         /// <summary>
-        /// 解密十六进制
+        /// RSA加密
         /// </summary>
-        /// <param name="rsa"></param>
-        /// <param name="content"></param>
+        /// <param name="privatekey">RSA私钥</param>
+        /// <param name="value">明文</param>
+        /// <param name="encoding">编码</param>
+        /// <param name="fOAEP"></param>
+        /// <param name="padding">填充模式</param>
+        /// <returns></returns>
+        public static string Encrypt(string privatekey, string value, Encoding encoding = null,
+            // ReSharper disable once InconsistentNaming
+            RSAEncryptionPadding padding = null, bool fOAEP = false) =>
+            Encrypt(GetRSACryptoServiceProvider(privatekey), value, encoding, padding, fOAEP);
+
+        /// <summary>
+        /// RSA加密
+        /// </summary>
+        /// <param name="rsa">RSA私钥</param>
+        /// <param name="value">明文</param>
+        /// <param name="encoding">编码</param>
+        /// <param name="fOAEP"></param>
+        /// <param name="padding">填充模式</param>
         /// <returns></returns>
         // ReSharper disable once InconsistentNaming
-        public static string DecryptHex(RSACryptoServiceProvider rsa, params string[] content)
+        public static string Encrypt(RSACryptoServiceProvider rsa, string value, Encoding encoding = null, RSAEncryptionPadding padding = null, bool fOAEP = false)
         {
-            if (content == null || !content.Any())
-                return null;
-            var result = content.Select(x => Encoding.UTF8.GetString(rsa.Decrypt(x.HexStringToBytes(), false)));
-            return string.Join(string.Empty, result);
+            encoding = encoding ?? Encoding.UTF8;
+            byte[] valueBytes = encoding.GetBytes(value);
+            byte[] encryptData = padding != null ? rsa.Encrypt(valueBytes, padding) : rsa.Encrypt(valueBytes, fOAEP);
+            return encoding.GetString(encryptData);
+        }
+
+        // ReSharper disable once InconsistentNaming
+        private static RSACryptoServiceProvider GetRSACryptoServiceProvider(string rsaKey)
+        {
+            if (string.IsNullOrWhiteSpace(rsaKey))
+                throw new ArgumentNullException(nameof(rsaKey));
+            var rsa = new RSACryptoServiceProvider();
+            rsa.FromXmlStringByAigioSoft(rsaKey);
+            return rsa;
         }
     }
-
 }
 
 namespace AigioSoft.Common
@@ -53,7 +155,12 @@ namespace AigioSoft.Common
     // ReSharper disable once InconsistentNaming
     public static class RSAExtensions
     {
-        public static void FromXmlString(this RSA rsa, string xmlString)
+        /// <summary>
+        /// RSACryptoServiceProvider.FromXmlString .NET Framework函数 标准库实现（参考反编译Framework函数代码）
+        /// </summary>
+        /// <param name="rsa"></param>
+        /// <param name="xmlString"></param>
+        public static void FromXmlStringByAigioSoft(this RSA rsa, string xmlString)
         {
             RSAParameters rsaParams = new RSAParameters();
 
