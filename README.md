@@ -2,13 +2,13 @@
 AigioSoft Common .NET Standard Library
 * Namespace AigioSoft.Common
   * Extensions
-    * [DateTime](#DateTimeExtensions)
-    * [Enum](#EnumTimeExtensions)
-    * [Linq](#LinqExtension)
-    * [String](#StringTimeExtensions)
+    * [DateTime](#datetimeextensions)
+    * [Enum](#enumextensions)
+    * [Linq](#linqextension)
+    * [String](#stringextensions)
     * XDocument
 * Namespace AigioSoft.Common.Helpers
-  * Hashs
+  * [Hashs](#hashshelper)
   * HttpClient
   * IPHelper
   * RSA
@@ -23,7 +23,7 @@ AigioSoft Common AspNetCore.Mvc .NET Standard Library
 
 ___
 
-### <span id="DateTimeExtensions">DateTimeExtensions</span>
+### <span id="datetimeextensions">DateTimeExtensions</span>
 ```
 using AigioSoft.Common;
 
@@ -46,7 +46,7 @@ DateTime.Now.ToMicrosoftDateFormat();
 // /Date(1492317727431+0800)/
 ```
 
-### <span id="EnumExtensions">EnumExtensions</span>
+### <span id="enumextensions">EnumExtensions</span>
 ```
 using AigioSoft.Common;
 using System.ComponentModel;
@@ -61,7 +61,7 @@ Enum1.Test.ToDescriptionString()
 // TestDescription
 ```
 
-### <span id="LinqExtension">LinqExtension</span>
+### <span id="linqextension">LinqExtension</span>
 ```
 using AigioSoft.Common;
 using System.Linq;
@@ -70,7 +70,7 @@ new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 }.AsQueryable().OrderByDescending(x => x).Pagi
 // {"PageSize":5,"Total":9,"PageCount":2,"CurrentPageIndex":1,"Table":[9,8,7,6,5]}
 ```
 
-### <span id="StringExtension">StringExtension</span>
+### <span id="stringextensions">StringExtension</span>
 ```
 using AigioSoft.Common;
 
@@ -78,7 +78,7 @@ DateTime temp = "2017-01-01".GetDateTime().Value;
 int temp = "233".GetInt32().Value;
 ```
 
-### <span id="HashsHelper">HashsHelper</span>
+### <span id="hashshelper">HashsHelper</span>
 ```
 using Helpers = AigioSoft.Common.Helpers;
 
