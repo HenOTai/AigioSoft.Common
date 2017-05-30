@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.6</TargetFramework>
+    <Authors>Aigio</Authors>
+    <Company>AigioSoft</Company>
+    <Product>Common.Release</Product>
+    <Description>发布处理（ASP.NET CORE MVC）</Description>
+    <Copyright>Copyright © AigioSoft 2017</Copyright>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>AigioSoft.Certificate.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD1_6</DefineConstants>
+    <OutputPath>bin\Debug\netstandard1.6\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AigioSoft.Common.Mvc\AigioSoft.Common.Mvc.csproj" />
+    <ProjectReference Include="..\AigioSoft.Common\AigioSoft.Common.csproj" />
+  </ItemGroup>
+
+</Project>
