@@ -11,7 +11,17 @@ namespace AigioSoft.Common
     /// </summary>
     public class LowBrowserVerFilterAttribute : ActionFilterAttribute
     {
-        public static string LowBrowserVerPagePath = "~/Views/Shared/LowBrowserVer.cshtml";
+        public LowBrowserVerFilterAttribute()
+        {
+
+        }
+
+        public LowBrowserVerFilterAttribute(string lowBrowserVerPagePath)
+        {
+            LowBrowserVerPagePath = lowBrowserVerPagePath;
+        }
+
+        public string LowBrowserVerPagePath { get; }
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
@@ -20,10 +30,37 @@ namespace AigioSoft.Common
                 && userAgent.IndexOf("MSIE", StringComparison.OrdinalIgnoreCase) != -1
                 && userAgent.IndexOf("rv:11.0", StringComparison.OrdinalIgnoreCase) == -1)
             {
-                context.Result = new ViewResult
+                if (string.IsNullOrWhiteSpace(LowBrowserVerPagePath))
                 {
-                    ViewName = LowBrowserVerPagePath
-                };
+                    context.Result = new ContentResult
+                    {
+                        Content = Mvc.Properties.Resources.LowBrowserVer,
+                        StatusCode = 200,
+                        ContentType = "text/html"
+                    };
+                }
+                else
+                {
+                    var lastIndex = LowBrowserVerPagePath.LastIndexOf('.') + 1;
+                    if (lastIndex > 0)
+                    {
+                        var extension =
+                            LowBrowserVerPagePath.Substring(lastIndex, LowBrowserVerPagePath.Length - lastIndex);
+                        if (string.Equals(extension, "cshtml", StringComparison.OrdinalIgnoreCase) ||
+                            string.Equals(extension, "html", StringComparison.OrdinalIgnoreCase))
+                        {
+                            context.Result = new ViewResult
+                            {
+                                ViewName = LowBrowserVerPagePath,
+                                StatusCode = 200
+                            };
+                        }
+                        else
+                        {
+                            throw new ArgumentOutOfRangeException(nameof(LowBrowserVerPagePath));
+                        }
+                    }
+                }
             }
         }
     }

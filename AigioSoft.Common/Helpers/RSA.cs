@@ -175,12 +175,17 @@ namespace AigioSoft.Common.Helpers
 #endif
                 throw new ArgumentNullException(nameof(rsaKey));
             var rsa = new RSACryptoServiceProvider();
+#if NET20 || NET35 || NET40 || NET45 || NET47
+            rsa.FromXmlString(rsaKey);
+#else
             rsa.FromXmlStringByAigioSoft(rsaKey);
+#endif
             return rsa;
         }
     }
 }
 
+#if !(NET20 || NET35 || NET40 || NET45 || NET47)
 namespace AigioSoft.Common
 {
     // ReSharper disable once InconsistentNaming
@@ -232,11 +237,7 @@ namespace AigioSoft.Common
 
         private static string SearchForTextOfLocalName(this string str, string name)
         {
-#if NET35
-            if (name.IsNullOrWhiteSpace())
-#else
             if (string.IsNullOrWhiteSpace(name))
-#endif
                 return null;
             var leftStr = $"<{name}>";
             var rightStr = $"</{name}>";
@@ -246,3 +247,4 @@ namespace AigioSoft.Common
         }
     }
 }
+#endif

@@ -8,11 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AigioSoft.Common.Mvc.Properties {
+namespace AigioSoft.Common.Mvc.Properties
+{
     using System;
     using System.Reflection;
-    
-    
+
+
     /// <summary>
     ///   一个强类型的资源类，用于查找本地化的字符串等。
     /// </summary>
@@ -23,44 +24,58 @@ namespace AigioSoft.Common.Mvc.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
-        
+    public class Resources
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resources()
+        {
         }
-        
+
         /// <summary>
         ///   返回此类使用的缓存的 ResourceManager 实例。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AigioSoft.Common.Mvc.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+        public static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if (object.ReferenceEquals(resourceMan, null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AigioSoft.Common.Mvc.Properties.Resources", typeof(Resources)
+#if NET20 || NET35 || NET40 || NET45 || NET451 || NET47
+                        .Assembly
+#else
+                        .GetTypeInfo().Assembly
+#endif
+                        );
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   使用此强类型资源类，为所有资源查找
         ///   重写当前线程的 CurrentUICulture 属性。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
-            get {
+        public static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
             }
         }
-        
+
         /// <summary>
         ///   查找类似 &lt;!DOCTYPE html&gt;
         /// &lt;html&gt;
@@ -90,12 +105,14 @@ namespace AigioSoft.Common.Mvc.Properties {
         /// }
         /// #content h1  [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
-        public static string _401 {
-            get {
+        public static string _401
+        {
+            get
+            {
                 return ResourceManager.GetString("_401", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   查找类似 &lt;!DOCTYPE html&gt;
         /// &lt;html&gt;
@@ -126,12 +143,14 @@ namespace AigioSoft.Common.Mvc.Properties {
         /// #content h1 {
         /// fo [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
-        public static string _403 {
-            get {
+        public static string _403
+        {
+            get
+            {
                 return ResourceManager.GetString("_403", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   查找类似 &lt;!DOCTYPE html&gt;
         /// &lt;html&gt;
@@ -162,12 +181,14 @@ namespace AigioSoft.Common.Mvc.Properties {
         /// #content h1 {
         /// font- [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
-        public static string _404 {
-            get {
+        public static string _404
+        {
+            get
+            {
                 return ResourceManager.GetString("_404", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   查找类似 &lt;!DOCTYPE html&gt;
         /// &lt;html&gt;
@@ -197,12 +218,14 @@ namespace AigioSoft.Common.Mvc.Properties {
         /// }
         /// #content h1 [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
-        public static string _405 {
-            get {
+        public static string _405
+        {
+            get
+            {
                 return ResourceManager.GetString("_405", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   查找类似 &lt;!DOCTYPE html&gt;
         /// &lt;html&gt;
@@ -232,12 +255,14 @@ namespace AigioSoft.Common.Mvc.Properties {
         /// }
         /// #conten [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
-        public static string _406 {
-            get {
+        public static string _406
+        {
+            get
+            {
                 return ResourceManager.GetString("_406", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   查找类似 &lt;!DOCTYPE html&gt;
         /// &lt;html&gt;
@@ -267,12 +292,14 @@ namespace AigioSoft.Common.Mvc.Properties {
         /// }
         ///  [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
-        public static string _412 {
-            get {
+        public static string _412
+        {
+            get
+            {
                 return ResourceManager.GetString("_412", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   查找类似 &lt;!DOCTYPE html&gt;
         /// &lt;html&gt;
@@ -303,12 +330,14 @@ namespace AigioSoft.Common.Mvc.Properties {
         /// #content h1 {
         /// f [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
-        public static string _501 {
-            get {
+        public static string _501
+        {
+            get
+            {
                 return ResourceManager.GetString("_501", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   查找类似 &lt;!DOCTYPE html&gt;
         /// &lt;html&gt;
@@ -338,9 +367,41 @@ namespace AigioSoft.Common.Mvc.Properties {
         /// }
         /// #co [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
-        public static string _502 {
-            get {
+        public static string _502
+        {
+            get
+            {
                 return ResourceManager.GetString("_502", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 &lt;!DOCTYPE html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///    &lt;title&gt;警告 - 用户浏览器版本过低&lt;/title&gt;
+        ///    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+        ///    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot;&gt;
+        ///    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;
+        ///    &lt;style type=&quot;text/css&quot;&gt;
+        ///        html, body {
+        ///            height: 100%;
+        ///            width: 100%;
+        ///            margin: 0;
+        ///        }
+        ///
+        ///        body {
+        ///            background-color: #605ca8;
+        ///        }
+        ///
+        ///        #feature {
+        ///            width: 960px;        /// [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        /// </summary>
+        public static string LowBrowserVer
+        {
+            get
+            {
+                return ResourceManager.GetString("LowBrowserVer", resourceCulture);
             }
         }
     }
