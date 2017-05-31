@@ -1,5 +1,13 @@
-## AigioSoft.Common `net35;net40;net45;net47;netstandard1.3`
+# ![Logo](logo.png) AigioSoft
+
+## AigioSoft.Common [![NuGet](https://img.shields.io/nuget/v/AigioSoft.Common.svg?label=nuget&style=flat-square)](https://www.nuget.org/packages/AigioSoft.Common/)
 AigioSoft Common .NET Standard Library
+
+To install AigioSoft.Common, run the following command in the Package Manager Console
+```
+PM Install-Package AigioSoft.Common
+```
+
 * Namespace AigioSoft.Common
   * Extensions
     * [DateTime](#datetimeextension)

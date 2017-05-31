@@ -9,6 +9,15 @@
     <Copyright>Copyright © AigioSoft 2017</Copyright>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>AigioSoft.Certificate.snk</AssemblyOriginatorKeyFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/LAigio/AigioSoft.Common/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/LAigio/AigioSoft.Common</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/LAigio/AigioSoft.Common/master/Logo.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/LAigio/AigioSoft.Common.git</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageReleaseNotes>公共类库 1.0</PackageReleaseNotes>
+    <PackageTags>Common,AigioSoft</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
