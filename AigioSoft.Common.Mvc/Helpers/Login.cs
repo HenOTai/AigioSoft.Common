@@ -82,7 +82,7 @@ namespace AigioSoft.Common.Helpers
             {
                 using (var rsa = new RSACryptoServiceProvider())
                 {
-                    rsa.FromXmlString(rsaprivatekey);
+                    rsa.FromXmlStringByAigioSoft(rsaprivatekey);
                     var deserialize = Decryption<T>(ciphertext, rsa);
                     if (deserialize?.Main == null || deserialize.Hash == null || !deserialize.Main.CreatTime.HasValue)
                         return (LoginDecryptionValidationType.InvalidFormat, null); //格式有误

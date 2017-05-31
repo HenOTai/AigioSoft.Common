@@ -113,12 +113,21 @@ namespace AigioSoft.Common.Helpers
         /// <param name="value">明文</param>
         /// <param name="encoding">编码</param>
         /// <param name="fOAEP"></param>
+#if !NET45
         /// <param name="padding">填充模式</param>
+#endif
         /// <returns></returns>
         public static string Encrypt(string privatekey, string value, Encoding encoding = null,
+#if !NET45
+            RSAEncryptionPadding padding = null,
+#endif
             // ReSharper disable once InconsistentNaming
-            RSAEncryptionPadding padding = null, bool fOAEP = false) =>
-            Encrypt(GetRSACryptoServiceProvider(privatekey), value, encoding, padding, fOAEP);
+            bool fOAEP = false) =>
+            Encrypt(GetRSACryptoServiceProvider(privatekey), value, encoding,
+#if !NET45
+                padding,
+#endif
+                fOAEP);
 
         /// <summary>
         /// RSA加密
@@ -127,14 +136,24 @@ namespace AigioSoft.Common.Helpers
         /// <param name="value">明文</param>
         /// <param name="encoding">编码</param>
         /// <param name="fOAEP"></param>
+#if !NET45
         /// <param name="padding">填充模式</param>
+#endif
         /// <returns></returns>
-        // ReSharper disable once InconsistentNaming
-        public static string Encrypt(RSACryptoServiceProvider rsa, string value, Encoding encoding = null, RSAEncryptionPadding padding = null, bool fOAEP = false)
+        public static string Encrypt(RSACryptoServiceProvider rsa, string value, Encoding encoding = null,
+#if !NET45
+            RSAEncryptionPadding padding = null,
+#endif
+            // ReSharper disable once InconsistentNaming
+            bool fOAEP = false)
         {
             encoding = encoding ?? Encoding.UTF8;
             byte[] valueBytes = encoding.GetBytes(value);
-            byte[] encryptData = padding != null ? rsa.Encrypt(valueBytes, padding) : rsa.Encrypt(valueBytes, fOAEP);
+            byte[] encryptData =
+#if !NET45
+                padding != null ? rsa.Encrypt(valueBytes, padding) : 
+#endif
+                rsa.Encrypt(valueBytes, fOAEP);
             return encoding.GetString(encryptData);
         }
 

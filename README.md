@@ -1,4 +1,4 @@
-## AigioSoft.Common `netstandard1.6`
+## AigioSoft.Common `.netstandard1.3/.net45/.net47`
 AigioSoft Common .NET Standard Library
 * Namespace AigioSoft.Common
   * Extensions
