@@ -22,7 +22,13 @@ namespace AigioSoft.Common.Helpers
         {
             get
             {
-                var baseDirectory = AppContext.BaseDirectory;
+
+                var baseDirectory =
+#if NET451
+                    AppDomain.CurrentDomain.BaseDirectory;
+#else
+                AppContext.BaseDirectory;
+#endif
                 var index = baseDirectory.LastIndexOf(DetectionPath, StringComparison.OrdinalIgnoreCase);
                 if (index != -1)
                     baseDirectory = baseDirectory.Substring(0, index);
