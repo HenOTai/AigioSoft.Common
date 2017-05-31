@@ -1,4 +1,4 @@
-# ![Logo](logo.png) AigioSoft
+# ![Logo](https://raw.githubusercontent.com/LAigio/AigioSoft.Common/master/Logo.png) AigioSoft
 
 ## AigioSoft.Common [![NuGet](https://img.shields.io/nuget/v/AigioSoft.Common.svg?label=nuget&style=flat-square)](https://www.nuget.org/packages/AigioSoft.Common/)
 AigioSoft Common .NET Standard Library
