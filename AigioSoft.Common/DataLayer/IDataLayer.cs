@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if !(NET20 || NET35 || NET40)
+
+using System;
 using System.Linq.Expressions;
 
 // ReSharper disable once CheckNamespace
@@ -65,3 +67,4 @@ namespace AigioSoft.Common
     {
     }
 }
+#endif

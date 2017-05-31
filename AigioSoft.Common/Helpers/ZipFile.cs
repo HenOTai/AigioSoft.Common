@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿#if !(NET20 || NET35 || NET40)
+using System.Linq;
 using System.IO.Compression;
 using System.IO;
 
@@ -68,3 +69,4 @@ namespace AigioSoft.Common.Helpers
             => System.IO.Compression.ZipFile.CreateFromDirectory(sourceDirectoryName, destinationArchiveFileName, compressionLevel, false);
     }
 }
+#endif

@@ -89,11 +89,19 @@ namespace AigioSoft.Common.Helpers
                 return string.Join(string.Empty,
                     (offset.HasValue && count.HasValue
                         ? hashAlgorithm.ComputeHash(data).Skip(offset.Value).Take(count.Value)
-                        : hashAlgorithm.ComputeHash(data)).Select(x => x.ToString($"{(isLower ? "x" : "X")}2")));
+                        : hashAlgorithm.ComputeHash(data)).Select(x => x.ToString($"{(isLower ? "x" : "X")}2"))
+#if (NET20 || NET35)
+                        .ToArray()
+#endif
+                        );
             }
             finally
             {
+#if NET35
+                hashAlgorithm.Clear();
+#else
                 hashAlgorithm.Dispose();
+#endif
             }
         }
     }

@@ -98,11 +98,19 @@ namespace AigioSoft.Common.Helpers
             {
                 // ReSharper disable once AccessToDisposedClosure
                 return string.Join(string.Empty,
-                    content.Select(x => encoding.GetString(rsa.Decrypt(func != null ? func(x) : encoding.GetBytes(x), false))));
+                    content.Select(x => encoding.GetString(rsa.Decrypt(func != null ? func(x) : encoding.GetBytes(x), false)))
+#if (NET20 || NET35)
+                    .ToArray()
+#endif
+                    );
             }
             finally
             {
+#if NET35
+                rsa.Clear();
+#else
                 rsa.Dispose();
+#endif
             }
         }
 
@@ -113,18 +121,18 @@ namespace AigioSoft.Common.Helpers
         /// <param name="value">明文</param>
         /// <param name="encoding">编码</param>
         /// <param name="fOAEP"></param>
-#if !NET45
+#if !(NET20 || NET35 || NET40 || NET45)
         /// <param name="padding">填充模式</param>
 #endif
         /// <returns></returns>
         public static string Encrypt(string privatekey, string value, Encoding encoding = null,
-#if !NET45
+#if !(NET20 || NET35 || NET40 || NET45)
             RSAEncryptionPadding padding = null,
 #endif
             // ReSharper disable once InconsistentNaming
             bool fOAEP = false) =>
             Encrypt(GetRSACryptoServiceProvider(privatekey), value, encoding,
-#if !NET45
+#if !(NET20 || NET35 || NET40 || NET45)
                 padding,
 #endif
                 fOAEP);
@@ -136,12 +144,12 @@ namespace AigioSoft.Common.Helpers
         /// <param name="value">明文</param>
         /// <param name="encoding">编码</param>
         /// <param name="fOAEP"></param>
-#if !NET45
+#if !(NET20 || NET35 || NET40 || NET45)
         /// <param name="padding">填充模式</param>
 #endif
         /// <returns></returns>
         public static string Encrypt(RSACryptoServiceProvider rsa, string value, Encoding encoding = null,
-#if !NET45
+#if !(NET20 || NET35 || NET40 || NET45)
             RSAEncryptionPadding padding = null,
 #endif
             // ReSharper disable once InconsistentNaming
@@ -150,7 +158,7 @@ namespace AigioSoft.Common.Helpers
             encoding = encoding ?? Encoding.UTF8;
             byte[] valueBytes = encoding.GetBytes(value);
             byte[] encryptData =
-#if !NET45
+#if !(NET20 || NET35 || NET40 || NET45)
                 padding != null ? rsa.Encrypt(valueBytes, padding) : 
 #endif
                 rsa.Encrypt(valueBytes, fOAEP);
@@ -160,7 +168,11 @@ namespace AigioSoft.Common.Helpers
         // ReSharper disable once InconsistentNaming
         private static RSACryptoServiceProvider GetRSACryptoServiceProvider(string rsaKey)
         {
+#if NET35
+            if (rsaKey.IsNullOrWhiteSpace())
+#else
             if (string.IsNullOrWhiteSpace(rsaKey))
+#endif
                 throw new ArgumentNullException(nameof(rsaKey));
             var rsa = new RSACryptoServiceProvider();
             rsa.FromXmlStringByAigioSoft(rsaKey);
@@ -220,7 +232,11 @@ namespace AigioSoft.Common
 
         private static string SearchForTextOfLocalName(this string str, string name)
         {
+#if NET35
+            if (name.IsNullOrWhiteSpace())
+#else
             if (string.IsNullOrWhiteSpace(name))
+#endif
                 return null;
             var leftStr = $"<{name}>";
             var rightStr = $"</{name}>";

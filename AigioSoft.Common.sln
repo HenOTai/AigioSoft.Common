@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AigioSoft.Common", "AigioSoft.Common\AigioSoft.Common.csproj", "{3D609896-CC57-4908-8D53-8A3B25C41765}"
 EndProject
@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AigioSoft.Common.Mvc", "Aig
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RootPath", "RootPath", "{BB5EF989-3713-4462-890A-6ABBC6EEBE97}"
 	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		Logo.png = Logo.png
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -17,6 +21,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AigioSoft.Common.UnitTest", "AigioSoft.Common.UnitTest\AigioSoft.Common.UnitTest.csproj", "{C50CC583-9086-4697-8798-CF8B5CE13EFF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AigioSoft.Common.UnitTest.Framework", "AigioSoft.Common.UnitTest.Framework\AigioSoft.Common.UnitTest.Framework.csproj", "{8C6CB418-F3F6-4B65-ACFC-66E2584D6535}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AigioSoft.Common.UnitTest.Framework35", "AigioSoft.Common.UnitTest.Framework35\AigioSoft.Common.UnitTest.Framework35.csproj", "{B63D7C83-6390-4DB8-BD1B-50AC4389A3C2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{B18F4992-CF77-4043-91B2-A97B26688E1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,8 +52,17 @@ Global
 		{8C6CB418-F3F6-4B65-ACFC-66E2584D6535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C6CB418-F3F6-4B65-ACFC-66E2584D6535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C6CB418-F3F6-4B65-ACFC-66E2584D6535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B63D7C83-6390-4DB8-BD1B-50AC4389A3C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B63D7C83-6390-4DB8-BD1B-50AC4389A3C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B63D7C83-6390-4DB8-BD1B-50AC4389A3C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B63D7C83-6390-4DB8-BD1B-50AC4389A3C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C50CC583-9086-4697-8798-CF8B5CE13EFF} = {B18F4992-CF77-4043-91B2-A97B26688E1C}
+		{8C6CB418-F3F6-4B65-ACFC-66E2584D6535} = {B18F4992-CF77-4043-91B2-A97B26688E1C}
+		{B63D7C83-6390-4DB8-BD1B-50AC4389A3C2} = {B18F4992-CF77-4043-91B2-A97B26688E1C}
 	EndGlobalSection
 EndGlobal

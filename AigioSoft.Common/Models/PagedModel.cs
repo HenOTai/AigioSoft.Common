@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if !NET20
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -59,3 +60,4 @@ namespace AigioSoft.Common
         public int Pagesize { get; set; } = 25;
     }
 }
+#endif

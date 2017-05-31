@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿#if !NET20
+using System.Linq;
 
 // ReSharper disable once CheckNamespace
 namespace AigioSoft.Common
@@ -29,3 +30,4 @@ namespace AigioSoft.Common
         }
     }
 }
+#endif

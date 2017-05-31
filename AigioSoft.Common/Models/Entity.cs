@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#if !(NET20 || NET35 || NET40)
+using System.ComponentModel.DataAnnotations;
 
 
 // ReSharper disable once CheckNamespace
@@ -25,3 +26,4 @@ namespace AigioSoft.Common
 
     }
 }
+#endif

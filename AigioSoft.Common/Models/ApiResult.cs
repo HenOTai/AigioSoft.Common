@@ -1,4 +1,4 @@
-﻿
+﻿#if !(NET20 || NET35 || NET40)
 
 // ReSharper disable once CheckNamespace
 namespace AigioSoft.Common
@@ -21,3 +21,4 @@ namespace AigioSoft.Common
 
     }
 }
+#endif

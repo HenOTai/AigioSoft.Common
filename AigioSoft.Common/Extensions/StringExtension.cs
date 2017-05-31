@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
+#if !(NET20 || NET35 || NET40)
 using System.Linq;
+#endif
 
 // ReSharper disable once CheckNamespace
 namespace AigioSoft.Common
@@ -115,6 +117,7 @@ namespace AigioSoft.Common
             return numArray;
         }
 
+#if !(NET20 || NET35 || NET40)
         /// <summary>
         /// 获取时间间隔字符串
         /// </summary>
@@ -130,5 +133,10 @@ namespace AigioSoft.Common
                     .GetDateTime());
             return (null, null);
         }
+#endif
+
+#if NET35
+        public static bool IsNullOrWhiteSpace(this string value) => string.IsNullOrEmpty(value) || value.Trim() == string.Empty;
+#endif
     }
 }

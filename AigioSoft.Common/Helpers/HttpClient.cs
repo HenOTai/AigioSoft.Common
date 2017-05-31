@@ -1,7 +1,9 @@
-﻿using System;
+﻿#if !(NET20 || NET35 || NET40)
+
+using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
@@ -55,3 +57,5 @@ namespace AigioSoft.Common.Helpers
         }
     }
 }
+
+#endif
