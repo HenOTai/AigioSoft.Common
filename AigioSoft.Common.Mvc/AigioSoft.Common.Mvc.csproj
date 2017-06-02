@@ -17,7 +17,7 @@
     <PackageTags>Common,AigioSoft,aspnetcore,aspnetcoremvc</PackageTags>
     <PackageReleaseNotes>公共类库 1.0（ASP.NET CORE MVC）</PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

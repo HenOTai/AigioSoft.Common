@@ -9,15 +9,16 @@
     <Copyright>Copyright © AigioSoft 2017</Copyright>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>AigioSoft.Certificate.snk</AssemblyOriginatorKeyFile>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://raw.githubusercontent.com/LAigio/AigioSoft.Common/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/LAigio/AigioSoft.Common</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/LAigio/AigioSoft.Common/master/Logo.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/LAigio/AigioSoft.Common.git</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
-    <PackageReleaseNotes>公共类库 1.0</PackageReleaseNotes>
+    <PackageReleaseNotes>公共类库 1.0.1</PackageReleaseNotes>
     <PackageTags>Common,AigioSoft</PackageTags>
+    <Version>1.0.1-alpha</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,9 +36,11 @@
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net35'">
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net40'">
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
     <PackageReference Include="System.ValueTuple" Version="4.3.1" />
@@ -51,5 +54,9 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Helpers\Httpbak.cs" />
+    <Compile Remove="Helpers\HttpClient.cs" />
   </ItemGroup>
 </Project>

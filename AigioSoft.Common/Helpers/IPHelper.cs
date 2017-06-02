@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using System.Threading.Tasks;
 
 namespace AigioSoft.Common.Helpers
 {
@@ -22,10 +23,13 @@ namespace AigioSoft.Common.Helpers
         public static (string responseText, IPositioningApiResult responseData) Positioning(string ip, string key,
             IPositioningApi apiData)
         {
-            var args = apiData.Args?.ToList() ?? new List<KeyValuePair<string, string>>();
-            args.Add(new KeyValuePair<string, string>(apiData.DeveloperKeyName, key));
-            args.Add(new KeyValuePair<string, string>(apiData.IpKeyName, ip));
-            var responseText = HttpClient.Send(apiData.Url, nameValueCollection: args);
+            var args = apiData.Args;
+            args.Add(apiData.DeveloperKeyName, key);
+            args.Add(apiData.IpKeyName, ip);
+            var responseText = Http.SendAsString(new Models.HttpRequest(apiData.Url)
+            {
+                Content = Models.HttpContent.Create(args)
+            }).Content;
             var responseData = JsonConvert.DeserializeObject(responseText, apiData.ResultType) as IPositioningApiResult;
             return (responseText, responseData);
         }
@@ -45,7 +49,7 @@ namespace AigioSoft.Common
         /// <summary>
         /// 请求参数
         /// </summary>
-        KeyValuePair<string, string>[] Args { get; }
+        Dictionary<string, string> Args { get; }
 
         /// <summary>
         /// 开发者密钥参数名
@@ -74,6 +78,7 @@ namespace AigioSoft.Common
 
         Type ResultType { get; }
     }
+
     public interface IPositioningApiResult
     {
         string Province { get; }
@@ -86,11 +91,9 @@ namespace AigioSoft.Common
     public class BaiduMapPositioning : IPositioningApi
     {
         public string Url => "https://api.map.baidu.com/location/ip";
-        public KeyValuePair<string, string>[] Args =>
-            new[]
-            {
-                new KeyValuePair<string, string>("coor", "bd09ll")
-            };
+
+        public Dictionary<string, string> Args => new Dictionary<string, string> { { "coor", "bd09ll" } };
+
         public string DeveloperKeyName => "ak";
         public string IpKeyName => "ip";
         public uint? Concurrency => 6000;
@@ -182,7 +185,7 @@ namespace AigioSoft.Common
     public class TencentMapPositioning : IPositioningApi
     {
         public string Url => "http://apis.map.qq.com/ws/location/v1/ip";
-        public KeyValuePair<string, string>[] Args => null;
+        public Dictionary<string, string> Args => null;
         public string DeveloperKeyName => "key";
         public string IpKeyName => "ip";
         public uint? Concurrency => 5;
@@ -269,7 +272,7 @@ namespace AigioSoft.Common
     public class AmapPositioning : IPositioningApi
     {
         public string Url => "http://restapi.amap.com/v3/ip";
-        public KeyValuePair<string, string>[] Args => null;
+        public Dictionary<string, string> Args => null;
         public string DeveloperKeyName => "key";
         public string IpKeyName => "ip";
         public uint? Concurrency => 10000;
